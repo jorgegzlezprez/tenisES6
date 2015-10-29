@@ -1,0 +1,4 @@
+.git
+.vscode
+jspm_packages/
+node_modules/
