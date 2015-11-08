@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import {Player} from './player';
+import * as playerValidation from './playerValidation';
 
 var players = [];
 
@@ -14,12 +15,20 @@ function addPlayer()
 { 
 	var playerName = getPlayerNameFromForm();
 	var playerRank = getPlayerRankFromForm();
+	var playerData = {name:playerName,rank:playerRank,players:players}
 	
-	var newPlayer = new Player(playerName,playerRank);		
+	var validationResult = playerValidation.validateData(playerData);
+	
+	if (validationResult.success) {
 
-	addPlayerToList(newPlayer);
-	
-	drawPlayerInList(newPlayer);
+		var newPlayer = new Player(playerName, playerRank);
+
+		addPlayerToList(newPlayer);
+
+		drawPlayerInList(newPlayer);
+	}
+	else
+		alert(playerValidation.getErrorMessage(validationResult.error));	
 }
 
 function getPlayerNameFromForm()
