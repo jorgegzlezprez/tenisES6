@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import {Round} from './round';
 import {Match} from './match';
+import * as common from '../../utils/common';
 
 export class Tournament {
     
@@ -42,11 +43,11 @@ export class Tournament {
 				htmlString += '<ul class="list-group separateTop" >';
 				htmlString += '<li class="list-group-item">';
 				htmlString += match.player1.name || '';
-				htmlString += '<button type="button" class="btn btn-success" id="btnWin'+i+y+'1">Win</button>';
+				htmlString += '<button type="button" class="btn btn-success btnWin" id="btnWin'+i+y+'1">Win</button>';
 				htmlString += '</li>';
 				htmlString += '<li class="list-group-item">';
 				htmlString += match.player2.name || '';
-				htmlString += '<button type="button" class="btn btn-success" id="btnWin'+i+y+'2">Win</button>';
+				htmlString += '<button type="button" class="btn btn-success btnWin" id="btnWin'+i+y+'2">Win</button>';
 				htmlString += '</li>'; 									
 				htmlString += '</ul>';
 				
@@ -119,5 +120,6 @@ function setWinner(nRound,nMatch,nPlayer,that)
 
 function showTournamentWinner(name)
 { 
-	$("#winner").html('<h1>The winner is '+ name +'!</h1>');
+	if(!common.isEmpty(name))
+		$("#winner").html('<h1>The winner is '+ name +'!</h1>');
 }
