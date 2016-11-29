@@ -1,5 +1,6 @@
 # tenisES6
-Little tool to annotate the winners of a tennis tournament
+Little tool to annotate the winners of a tennis tournament.
+
 In develop, please see the dev branch.
 
 # Installation and run
